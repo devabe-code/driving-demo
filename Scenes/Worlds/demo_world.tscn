@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnej2f0lffx20"]
+
+[ext_resource type="PackedScene" uid="uid://bgl7vo7nnss0a" path="res://Scenes/Maps/parking_lot.tscn" id="2_073m0"]
+[ext_resource type="PackedScene" uid="uid://swnicx7ia4o8" path="res://Scenes/Entities/porsche_1975.tscn" id="2_vkopd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xxask"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_cxpcq"]
+sky_material = SubResource("ProceduralSkyMaterial_xxask")
+
+[sub_resource type="Environment" id="Environment_wq5u2"]
+background_mode = 2
+sky = SubResource("Sky_cxpcq")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="demo_world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wq5u2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 61, 0)
+shadow_enabled = true
+
+[node name="porsche_1975" parent="." instance=ExtResource("2_vkopd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.425, -4.22, -5.62)
+
+[node name="parking_lot" parent="." instance=ExtResource("2_073m0")]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -4.85, 0)
